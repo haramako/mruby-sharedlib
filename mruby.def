@@ -1,11 +1,8 @@
 LIBRARY mruby.dll
 EXPORTS
-	mrb_add_irep
-	mrb_alias_method
-	mrb_alloca
-	mrb_any_to_s
 	mrb_ary_clear
 	mrb_ary_concat
+	mrb_ary_decref
 	mrb_ary_entry
 	mrb_ary_join
 	mrb_ary_modify
@@ -14,255 +11,514 @@ EXPORTS
 	mrb_ary_new_from_values
 	mrb_ary_pop
 	mrb_ary_push
-	mrb_ary_ref
 	mrb_ary_replace
 	mrb_ary_resize
 	mrb_ary_set
 	mrb_ary_shift
 	mrb_ary_splat
+	mrb_ary_splice
+	mrb_ary_subseq
 	mrb_ary_unshift
 	mrb_assoc_new
-	mrb_attr_get
-	mrb_bug
-	mrb_calloc
-	mrb_check_array_type
-	mrb_check_convert_type
-	mrb_check_hash_type
-	mrb_check_intern
-	mrb_check_intern_cstr
-	mrb_check_intern_str
-	mrb_check_string_type
-	mrb_check_to_integer
-	mrb_check_type
+	mrb_init_array
+	mrb_exc_backtrace
+	mrb_get_backtrace
+	mrb_keep_backtrace
+	mrb_print_backtrace
+	mrb_unpack_backtrace
+	mrb_dump_irep_cstruct
+	mrb_alias_method
+	mrb_block_given_p
 	mrb_class_defined
+	mrb_class_defined_id
+	mrb_class_defined_under
+	mrb_class_defined_under_id
 	mrb_class_get
+	mrb_class_get_id
 	mrb_class_get_under
+	mrb_class_get_under_id
 	mrb_class_name
+	mrb_class_name_class
 	mrb_class_new
-	mrb_class_outer_module
 	mrb_class_path
 	mrb_class_real
-	mrb_close
-	mrb_closure_new_cfunc
-	mrb_const_defined
-	mrb_const_defined_at
-	mrb_const_get
-	mrb_const_remove
-	mrb_const_set
-	mrb_context_run
-	mrb_convert_to_integer
-	mrb_convert_type
-	mrb_cv_defined
-	mrb_cv_get
-	mrb_cv_set
-	mrb_data_check_get_ptr
-	mrb_data_check_type
-	mrb_data_get_ptr
-	mrb_data_object_alloc
-	mrb_debug_get_filename
-	mrb_debug_get_line
-	mrb_debug_info_alloc
-	mrb_debug_info_append_file
-	mrb_debug_info_free
-	mrb_default_allocf
+	mrb_const_name_p
 	mrb_define_alias
+	mrb_define_alias_id
 	mrb_define_class
 	mrb_define_class_id
 	mrb_define_class_method
+	mrb_define_class_method_id
 	mrb_define_class_under
-	mrb_define_const
-	mrb_define_global_const
+	mrb_define_class_under_id
 	mrb_define_method
 	mrb_define_method_id
 	mrb_define_method_raw
 	mrb_define_module
 	mrb_define_module_function
+	mrb_define_module_function_id
 	mrb_define_module_id
 	mrb_define_module_under
+	mrb_define_module_under_id
 	mrb_define_singleton_method
-	mrb_eql
-	mrb_equal
-	mrb_exc_backtrace
-	mrb_exc_new
-	mrb_exc_new_str
-	mrb_exc_raise
-	mrb_f_raise
-	mrb_f_send
-	mrb_fiber_resume
-	mrb_fiber_yield
-	mrb_field_write_barrier
-	mrb_fixnum_to_str
-	mrb_flo_to_fixnum
-	mrb_Float
-	mrb_float_to_str
-	mrb_format
-	mrb_free
-	mrb_free_context
-	mrb_full_gc
-	mrb_funcall
-	mrb_funcall_argv
-	mrb_funcall_with_block
-	mrb_garbage_collect
-	mrb_gc_arena_restore
-	mrb_gc_arena_save
-	mrb_gc_mark
-	mrb_gc_protect
-	mrb_gc_register
-	mrb_gc_unregister
-	mrb_generate_code
+	mrb_define_singleton_method_id
+	mrb_exc_get_id
+	mrb_gc_free_mt
+	mrb_gc_mark_mt
+	mrb_gc_mark_mt_size
+	mrb_get_arg1
+	mrb_get_argc
 	mrb_get_args
-	mrb_get_backtrace
-	mrb_gv_get
-	mrb_gv_remove
-	mrb_gv_set
-	mrb_hash_clear
-	mrb_hash_delete_key
-	mrb_hash_empty_p
-	mrb_hash_fetch
-	mrb_hash_get
-	mrb_hash_keys
-	mrb_hash_new
-	mrb_hash_new_capa
-	mrb_hash_set
-	mrb_hash_tbl
+	mrb_get_argv
 	mrb_include_module
-	mrb_incremental_gc
-	mrb_inspect
+	mrb_init_class
 	mrb_instance_new
-	mrb_Integer
-	mrb_intern
-	mrb_intern_cstr
-	mrb_intern_static
-	mrb_intern_str
-	mrb_iv_check
-	mrb_iv_copy
-	mrb_iv_defined
-	mrb_iv_get
-	mrb_iv_p
-	mrb_iv_remove
-	mrb_iv_set
-	mrb_load_file
-	mrb_load_file_cxt
-	mrb_load_irep
-	mrb_load_irep_cxt
-	mrb_load_irep_file
-	mrb_load_irep_file_cxt
-	mrb_load_nstring
-	mrb_load_nstring_cxt
-	mrb_load_string
-	mrb_load_string_cxt
-	mrb_make_exception
-	mrb_malloc
-	mrb_malloc_simple
+	mrb_mc_clear_by_class
+	mrb_method_added
 	mrb_method_search
 	mrb_method_search_vm
-	mrb_mod_cv_set
+	mrb_mod_define_method_m
+	mrb_mod_to_s
 	mrb_module_get
+	mrb_module_get_id
 	mrb_module_get_under
+	mrb_module_get_under_id
 	mrb_module_new
-	mrb_name_error
-	mrb_no_method_error
+	mrb_mt_foreach
+	mrb_notimplement
 	mrb_notimplement_m
-	mrb_obj_alloc
-	mrb_obj_as_string
 	mrb_obj_class
 	mrb_obj_classname
 	mrb_obj_clone
 	mrb_obj_dup
-	mrb_obj_eq
-	mrb_obj_equal
-	mrb_obj_id
-	mrb_obj_inspect
-	mrb_obj_is_instance_of
-	mrb_obj_is_kind_of
-	mrb_obj_iv_defined
-	mrb_obj_iv_get
-	mrb_obj_iv_ifnone
-	mrb_obj_iv_set
+	mrb_obj_equal_m
 	mrb_obj_new
 	mrb_obj_respond_to
+	mrb_prepend_module
+	mrb_remove_method
+	mrb_respond_to
+	mrb_singleton_class
+	mrb_singleton_class_ptr
+	mrb_undef_class_method
+	mrb_undef_class_method_id
+	mrb_undef_method
+	mrb_undef_method_id
+	mrb_vm_define_class
+	mrb_vm_define_module
+	mrb_codedump_all
+	mrb_init_comparable
+	mrb_debug_get_filename
+	mrb_debug_get_line
+	mrb_debug_info_alloc
+	mrb_debug_info_append_file
+	mrb_debug_info_free
+	mrb_packed_int_decode
+	mrb_packed_int_encode
+	mrb_packed_int_len
+	mrb_dump_irep
+	mrb_dump_irep_binary
+	mrb_dump_irep_cfunc
+	mrb_init_enumerable
+	mrb_argnum_error
+	mrb_bug
+	mrb_core_init_abort
+	mrb_core_init_protect
+	mrb_exc_inspect
+	mrb_exc_mesg_get
+	mrb_exc_mesg_set
+	mrb_exc_new
+	mrb_exc_new_str
+	mrb_exc_raise
+	mrb_exc_set
+	mrb_format
+	mrb_frozen_error
+	mrb_init_exception
+	mrb_make_exception
+	mrb_name_error
+	mrb_no_method_error
+	mrb_protect_atexit
+	mrb_raise
+	mrb_raise_nomemory
+	mrb_raisef
+	mrb_sys_fail
+	mrb_vformat
+	mrb_warn
+	mrb_boxing_int_value
+	mrb_data_check_get_ptr
+	mrb_data_check_type
+	mrb_data_get_ptr
+	mrb_data_object_alloc
+	mrb_float_id
+	mrb_int_id
+	mrb_obj_id
 	mrb_obj_to_sym
-	mrb_open
-	mrb_open_allocf
-	mrb_open_core
-	mrb_p
-	mrb_parse_file
-	mrb_parse_nstring
-	mrb_parse_string
-	mrb_parser_free
-	mrb_parser_get_filename
-	mrb_parser_new
-	mrb_parser_parse
-	mrb_parser_set_filename
+	mrb_word_boxing_cptr_value
+	mrb_word_boxing_float_value
+	mrb_word_boxing_value_float
+	mrb_format_float
+	mrb_alloca
+	mrb_calloc
+	mrb_field_write_barrier
+	mrb_free
+	mrb_full_gc
+	mrb_garbage_collect
+	mrb_gc_destroy
+	mrb_gc_init
+	mrb_gc_mark
+	mrb_gc_protect
+	mrb_gc_register
+	mrb_gc_unregister
+	mrb_incremental_gc
+	mrb_init_gc
+	mrb_malloc
+	mrb_malloc_simple
+	mrb_obj_alloc
+	mrb_object_dead_p
+	mrb_objspace_each_objects
+	mrb_objspace_page_slot_size
+	mrb_realloc
+	mrb_realloc_simple
+	mrb_write_barrier
+	mrb_gc_free_hash
+	mrb_gc_mark_hash
+	mrb_gc_mark_hash_size
+	mrb_hash_clear
+	mrb_hash_delete_key
+	mrb_hash_dup
+	mrb_hash_empty_p
+	mrb_hash_fetch
+	mrb_hash_foreach
+	mrb_hash_get
+	mrb_hash_key_p
+	mrb_hash_keys
+	mrb_hash_memsize
+	mrb_hash_merge
+	mrb_hash_new
+	mrb_hash_new_capa
+	mrb_hash_set
+	mrb_hash_size
+	mrb_hash_values
+	mrb_init_hash
+	mrb_init_core
+	mrb_f_raise
+	mrb_func_basic_p
+	mrb_init_kernel
+	mrb_method_missing
+	mrb_obj_freeze
+	mrb_obj_id_m
+	mrb_obj_init_copy
+	mrb_obj_inspect
+	mrb_obj_is_instance_of
+	mrb_obj_missing
+	mrb_load_irep
+	mrb_load_irep_buf
+	mrb_load_irep_buf_cxt
+	mrb_load_irep_cxt
+	mrb_load_irep_file
+	mrb_load_irep_file_cxt
+	mrb_load_proc
+	mrb_read_irep
+	mrb_read_irep_buf
+	mrb_read_irep_file
+	mrb_check_num_exact
+	mrb_cmp
+	mrb_div_float
+	mrb_div_int
+	mrb_float_to_integer
+	mrb_float_to_str
+	mrb_init_numeric
+	mrb_int_to_cstr
+	mrb_integer_to_str
+	mrb_num_minus
+	mrb_num_mul
+	mrb_num_plus
+	mrb_num_shift
+	mrb_any_to_s
+	mrb_check_array_type
+	mrb_check_hash_type
+	mrb_check_string_type
+	mrb_check_type
+	mrb_ensure_array_type
+	mrb_ensure_float_type
+	mrb_ensure_hash_type
+	mrb_ensure_int_type
+	mrb_ensure_string_type
+	mrb_eql
+	mrb_equal
+	mrb_init_object
+	mrb_inspect
+	mrb_obj_eq
+	mrb_obj_equal
+	mrb_obj_is_kind_of
+	mrb_type_convert
+	mrb_type_convert_check
 	mrb_pool_alloc
 	mrb_pool_can_realloc
 	mrb_pool_close
 	mrb_pool_open
 	mrb_pool_realloc
-	mrb_prepend_module
-	mrb_print_backtrace
+	mrb_core_init_printabort
+	mrb_p
 	mrb_print_error
-	mrb_proc_cfunc_env_get
-	mrb_proc_new_cfunc
-	mrb_proc_new_cfunc_with_env
-	mrb_ptr_to_str
-	mrb_raise
-	mrb_raisef
-	mrb_range_beg_len
-	mrb_range_new
-	mrb_read_irep
-	mrb_realloc
-	mrb_realloc_simple
-	mrb_regexp_p
-	mrb_respond_to
-	mrb_run
 	mrb_show_copyright
 	mrb_show_version
-	mrb_singleton_class
+	mrb_closure_new
+	mrb_closure_new_cfunc
+	mrb_env_new
+	mrb_init_proc
+	mrb_proc_arity
+	mrb_proc_cfunc_env_get
+	mrb_proc_copy
+	mrb_proc_get_caller
+	mrb_proc_local_variables
+	mrb_proc_merge_lvar
+	mrb_proc_new
+	mrb_proc_new_cfunc
+	mrb_proc_new_cfunc_with_env
+	mrb_gc_mark_range
+	mrb_get_values_at
+	mrb_init_range
+	mrb_range_beg_len
+	mrb_range_new
+	mrb_range_ptr
+	mrb_float_read
+	mrb_int_read
+	mrb_add_irep
+	mrb_close
+	mrb_default_allocf
+	mrb_free_context
+	mrb_irep_cutref
+	mrb_irep_decref
+	mrb_irep_free
+	mrb_irep_incref
+	mrb_open
+	mrb_open_allocf
+	mrb_open_core
 	mrb_state_atexit
+	mrb_top_self
+	mrb_digitmap
+	mrb_gc_free_str
+	mrb_init_string
+	mrb_locale_from_utf8
+	mrb_obj_as_string
+	mrb_ptr_to_str
 	mrb_str_append
-	mrb_str_buf_new
+	mrb_str_aref
+	mrb_str_beg_len
+	mrb_str_byte_subseq
 	mrb_str_cat
 	mrb_str_cat_cstr
 	mrb_str_cat_str
 	mrb_str_cmp
 	mrb_str_concat
+	mrb_str_dump
 	mrb_str_dup
 	mrb_str_equal
+	mrb_str_hash
+	mrb_str_index
+	mrb_str_inspect
 	mrb_str_intern
 	mrb_str_modify
+	mrb_str_modify_keep_ascii
 	mrb_str_new
+	mrb_str_new_capa
 	mrb_str_new_cstr
 	mrb_str_new_static
 	mrb_str_plus
 	mrb_str_resize
+	mrb_str_strlen
 	mrb_str_substr
 	mrb_str_to_cstr
 	mrb_str_to_dbl
-	mrb_str_to_inum
-	mrb_str_to_str
-	mrb_string_type
+	mrb_str_to_integer
+	mrb_string_cstr
 	mrb_string_value_cstr
+	mrb_string_value_len
 	mrb_string_value_ptr
-	mrb_sym2name
-	mrb_sym2name_len
-	mrb_sym2str
-	mrb_sys_fail
-	mrb_to_flo
-	mrb_to_int
-	mrb_top_self
-	mrb_toplevel_run
-	mrb_toplevel_run_keep
-	mrb_undef_class_method
-	mrb_undef_method
-	mrb_vm_define_class
-	mrb_vm_define_module
-	mrb_warn
-	mrb_write_barrier
+	mrb_utf8_from_locale
+	mrb_check_intern
+	mrb_check_intern_cstr
+	mrb_check_intern_str
+	mrb_free_symtbl
+	mrb_init_symbol
+	mrb_init_symtbl
+	mrb_intern
+	mrb_intern_check
+	mrb_intern_check_cstr
+	mrb_intern_check_str
+	mrb_intern_cstr
+	mrb_intern_static
+	mrb_intern_str
+	mrb_sym_dump
+	mrb_sym_name
+	mrb_sym_name_len
+	mrb_sym_str
+	mrb_attr_get
+	mrb_class_find_path
+	mrb_const_defined
+	mrb_const_defined_at
+	mrb_const_get
+	mrb_const_remove
+	mrb_const_set
+	mrb_cv_defined
+	mrb_cv_get
+	mrb_cv_set
+	mrb_define_const
+	mrb_define_const_id
+	mrb_define_global_const
+	mrb_f_global_variables
+	mrb_gc_free_gv
+	mrb_gc_free_iv
+	mrb_gc_mark_gv
+	mrb_gc_mark_iv
+	mrb_gc_mark_iv_size
+	mrb_gv_get
+	mrb_gv_remove
+	mrb_gv_set
+	mrb_ident_p
+	mrb_iv_copy
+	mrb_iv_defined
+	mrb_iv_foreach
+	mrb_iv_get
+	mrb_iv_name_sym_check
+	mrb_iv_name_sym_p
+	mrb_iv_remove
+	mrb_iv_set
+	mrb_mod_class_variables
+	mrb_mod_constants
+	mrb_mod_cv_defined
+	mrb_mod_cv_get
+	mrb_mod_cv_set
+	mrb_obj_instance_variables
+	mrb_obj_iv_defined
+	mrb_obj_iv_get
+	mrb_obj_iv_inspect
+	mrb_obj_iv_set
+	mrb_obj_iv_set_force
+	mrb_obj_iv_tbl_memsize
+	mrb_vm_const_get
+	mrb_vm_const_set
+	mrb_vm_cv_get
+	mrb_vm_cv_set
+	mrb_vm_special_get
+	mrb_vm_special_set
+	mrb_init_version
+	mrb_ci_bidx
+	mrb_ci_nregs
+	mrb_env_unshare
+	mrb_exec_irep
+	mrb_f_send
+	mrb_funcall
+	mrb_funcall_argv
+	mrb_funcall_id
+	mrb_funcall_with_block
+	mrb_mod_module_eval
+	mrb_obj_instance_eval
+	mrb_protect_error
+	mrb_stack_extend
+	mrb_top_run
+	mrb_vm_exec
+	mrb_vm_run
 	mrb_yield
 	mrb_yield_argv
+	mrb_yield_cont
 	mrb_yield_with_class
-	mrbc_context_free
-	mrbc_context_new
-	mrbc_filename
-	mrbc_partial_hook
+	mrb_decode_insn
+	mrb_generate_code
+	mrb_irep_remove_lv
+	mrb_load_detect_file_cxt
+	mrb_load_exec
+	mrb_load_file
+	mrb_load_file_cxt
+	mrb_load_nstring
+	mrb_load_nstring_cxt
+	mrb_load_string
+	mrb_load_string_cxt
+	mrb_parse_file
+	mrb_parse_nstring
+	mrb_parse_string
+	mrb_parser_dump
+	mrb_parser_foreach_top_variable
+	mrb_parser_free
+	mrb_parser_get_filename
+	mrb_parser_new
+	mrb_parser_parse
+	mrb_parser_set_filename
+	mrb_reserved_word
+	mrb_init_mrblib
+	mrb_mruby_string_ext_gem_final
+	mrb_mruby_string_ext_gem_init
+	mrb_mruby_numeric_ext_gem_final
+	mrb_mruby_numeric_ext_gem_init
+	mrb_mruby_array_ext_gem_final
+	mrb_mruby_array_ext_gem_init
+	mrb_mruby_hash_ext_gem_final
+	mrb_mruby_hash_ext_gem_init
+	mrb_mruby_range_ext_gem_final
+	mrb_mruby_range_ext_gem_init
+	mrb_mruby_proc_ext_gem_final
+	mrb_mruby_proc_ext_gem_init
+	mrb_proc_parameters
+	mrb_proc_source_location
+	mrb_mruby_symbol_ext_gem_final
+	mrb_mruby_symbol_ext_gem_init
+	mrb_mruby_object_ext_gem_final
+	mrb_mruby_object_ext_gem_init
+	mrb_mruby_objectspace_gem_final
+	mrb_mruby_objectspace_gem_init
+	mrb_fiber_alive_p
+	mrb_fiber_resume
+	mrb_fiber_yield
+	mrb_mruby_fiber_gem_final
+	mrb_mruby_fiber_gem_init
+	mrb_mruby_kernel_ext_gem_final
+	mrb_mruby_kernel_ext_gem_init
+	mrb_mruby_class_ext_gem_final
+	mrb_mruby_class_ext_gem_init
+	mrb_mruby_errno_gem_final
+	mrb_mruby_errno_gem_init
+	mrb_mruby_pack_gem_final
+	mrb_mruby_pack_gem_init
+	mrb_mruby_sprintf_gem_final
+	mrb_mruby_sprintf_gem_init
+	mrb_str_format
+	mrb_mruby_time_gem_final
+	mrb_mruby_time_gem_init
+	mrb_time_at
+	mrb_mruby_struct_gem_final
+	mrb_mruby_struct_gem_init
+	mrb_mruby_random_gem_final
+	mrb_mruby_random_gem_init
+	mrb_init_file
+	mrb_init_file_test
+	mrb_init_io
+	mrb_io_fileno
+	mrb_io_type
+	mrb_mruby_io_gem_final
+	mrb_mruby_io_gem_init
+	mrb_mruby_socket_gem_final
+	mrb_mruby_socket_gem_init
+	mrb_mruby_print_gem_final
+	mrb_mruby_print_gem_init
+	mrb_mruby_math_gem_final
+	mrb_mruby_math_gem_init
+	mrb_mruby_rational_gem_final
+	mrb_mruby_rational_gem_init
+	mrb_rational_div
+	mrb_rational_new
+	mrb_rational_to_f
+	mrb_rational_to_i
+	mrb_complex_eq
+	mrb_complex_get
+	mrb_complex_new
+	mrb_complex_to_f
+	mrb_complex_to_i
+	mrb_mruby_complex_gem_final
+	mrb_mruby_complex_gem_init
+	mrb_mruby_metaprog_gem_final
+	mrb_mruby_metaprog_gem_init
+	mrb_mruby_method_gem_final
+	mrb_mruby_method_gem_init
+	mrb_mruby_eval_gem_final
+	mrb_mruby_eval_gem_init
+	mrb_init_mrbgems

@@ -3,6 +3,7 @@ EXPORTS
 	mrb_ary_clear
 	mrb_ary_concat
 	mrb_ary_decref
+	mrb_ary_delete_at
 	mrb_ary_entry
 	mrb_ary_join
 	mrb_ary_modify
@@ -136,6 +137,7 @@ EXPORTS
 	mrb_make_exception
 	mrb_name_error
 	mrb_no_method_error
+	mrb_print_error
 	mrb_protect_atexit
 	mrb_raise
 	mrb_raise_nomemory
@@ -224,15 +226,22 @@ EXPORTS
 	mrb_cmp
 	mrb_div_float
 	mrb_div_int
+	mrb_div_int_value
 	mrb_float_to_integer
 	mrb_float_to_str
 	mrb_init_numeric
+	mrb_int_add
+	mrb_int_mul
+	mrb_int_overflow
+	mrb_int_pow
+	mrb_int_sub
 	mrb_int_to_cstr
+	mrb_int_zerodiv
 	mrb_integer_to_str
-	mrb_num_minus
-	mrb_num_mul
-	mrb_num_plus
 	mrb_num_shift
+	mrb_num_add
+	mrb_num_mul
+	mrb_num_sub
 	mrb_any_to_s
 	mrb_check_array_type
 	mrb_check_hash_type
@@ -242,6 +251,7 @@ EXPORTS
 	mrb_ensure_float_type
 	mrb_ensure_hash_type
 	mrb_ensure_int_type
+	mrb_ensure_integer_type
 	mrb_ensure_string_type
 	mrb_eql
 	mrb_equal
@@ -259,7 +269,6 @@ EXPORTS
 	mrb_pool_realloc
 	mrb_core_init_printabort
 	mrb_p
-	mrb_print_error
 	mrb_show_copyright
 	mrb_show_version
 	mrb_closure_new
@@ -326,15 +335,12 @@ EXPORTS
 	mrb_str_new_static
 	mrb_str_plus
 	mrb_str_resize
-	mrb_str_strlen
 	mrb_str_substr
 	mrb_str_to_cstr
 	mrb_str_to_dbl
 	mrb_str_to_integer
 	mrb_string_cstr
 	mrb_string_value_cstr
-	mrb_string_value_len
-	mrb_string_value_ptr
 	mrb_utf8_from_locale
 	mrb_check_intern
 	mrb_check_intern_cstr
@@ -417,12 +423,49 @@ EXPORTS
 	mrb_protect_error
 	mrb_stack_extend
 	mrb_top_run
+	mrb_vm_ci_env
+	mrb_vm_ci_env_set
+	mrb_vm_ci_proc_set
+	mrb_vm_ci_target_class
+	mrb_vm_ci_target_class_set
 	mrb_vm_exec
 	mrb_vm_run
 	mrb_yield
 	mrb_yield_argv
 	mrb_yield_cont
 	mrb_yield_with_class
+	mrb_as_bint
+	mrb_bint_add
+	mrb_bint_add_ii
+	mrb_bint_and
+	mrb_bint_as_float
+	mrb_bint_as_int
+	mrb_bint_cmp
+	mrb_bint_copy
+	mrb_bint_div
+	mrb_bint_div_ii
+	mrb_bint_divmod
+	mrb_bint_idiv
+	mrb_bint_lshift
+	mrb_bint_memsize
+	mrb_bint_mod
+	mrb_bint_mul
+	mrb_bint_mul_ii
+	mrb_bint_new
+	mrb_bint_new_float
+	mrb_bint_new_int
+	mrb_bint_new_str
+	mrb_bint_or
+	mrb_bint_pow
+	mrb_bint_powm
+	mrb_bint_rem
+	mrb_bint_rev
+	mrb_bint_rshift
+	mrb_bint_sub
+	mrb_bint_sub_ii
+	mrb_bint_to_s
+	mrb_bint_xor
+	mrb_gc_free_bint
 	mrb_decode_insn
 	mrb_generate_code
 	mrb_irep_remove_lv
@@ -445,6 +488,11 @@ EXPORTS
 	mrb_parser_parse
 	mrb_parser_set_filename
 	mrb_reserved_word
+	mrbc_cleanup_local_variables
+	mrbc_context_free
+	mrbc_context_new
+	mrbc_filename
+	mrbc_partial_hook
 	mrb_init_mrblib
 	mrb_mruby_string_ext_gem_final
 	mrb_mruby_string_ext_gem_init
@@ -489,6 +537,38 @@ EXPORTS
 	mrb_mruby_struct_gem_init
 	mrb_mruby_random_gem_final
 	mrb_mruby_random_gem_init
+	mrb_mruby_math_gem_final
+	mrb_mruby_math_gem_init
+	mrb_mruby_rational_gem_final
+	mrb_mruby_rational_gem_init
+	mrb_rational_add
+	mrb_rational_copy
+	mrb_rational_div
+	mrb_rational_mul
+	mrb_rational_new
+	mrb_rational_sub
+	mrb_rational_to_f
+	mrb_rational_to_i
+	mrb_complex_add
+	mrb_complex_copy
+	mrb_complex_div
+	mrb_complex_eq
+	mrb_complex_get
+	mrb_complex_mul
+	mrb_complex_new
+	mrb_complex_sub
+	mrb_complex_to_f
+	mrb_complex_to_i
+	mrb_mruby_complex_gem_final
+	mrb_mruby_complex_gem_init
+	mrb_mruby_cmath_gem_final
+	mrb_mruby_cmath_gem_init
+	mrb_mruby_metaprog_gem_final
+	mrb_mruby_metaprog_gem_init
+	mrb_mruby_method_gem_final
+	mrb_mruby_method_gem_init
+	mrb_mruby_eval_gem_final
+	mrb_mruby_eval_gem_init
 	mrb_init_file
 	mrb_init_file_test
 	mrb_init_io
@@ -496,29 +576,40 @@ EXPORTS
 	mrb_io_type
 	mrb_mruby_io_gem_final
 	mrb_mruby_io_gem_init
-	mrb_mruby_socket_gem_final
-	mrb_mruby_socket_gem_init
-	mrb_mruby_print_gem_final
-	mrb_mruby_print_gem_init
-	mrb_mruby_math_gem_final
-	mrb_mruby_math_gem_init
-	mrb_mruby_rational_gem_final
-	mrb_mruby_rational_gem_init
-	mrb_rational_div
-	mrb_rational_new
-	mrb_rational_to_f
-	mrb_rational_to_i
-	mrb_complex_eq
-	mrb_complex_get
-	mrb_complex_new
-	mrb_complex_to_f
-	mrb_complex_to_i
-	mrb_mruby_complex_gem_final
-	mrb_mruby_complex_gem_init
-	mrb_mruby_metaprog_gem_final
-	mrb_mruby_metaprog_gem_init
-	mrb_mruby_method_gem_final
-	mrb_mruby_method_gem_init
-	mrb_mruby_eval_gem_final
-	mrb_mruby_eval_gem_init
+	mrb_mruby_binding_gem_final
+	mrb_mruby_binding_gem_init
+	mrb_mruby_unity_gem_final
+	mrb_mruby_unity_gem_init
+	mrb_rarray_len_noinline
+	mrb_rarray_ptr_noinline
+	mrb_unity_abort_callback
+	mrb_unity_as_float
+	mrb_unity_as_int
+	mrb_unity_bool_value
+	mrb_unity_class_ptr
+	mrb_unity_false_value
+	mrb_unity_fixnum_value
+	mrb_unity_float_value
+	mrb_unity_funcall_argv
+	mrb_unity_gc_arena_restore
+	mrb_unity_gc_arena_save
+	mrb_unity_int_value
+	mrb_unity_mrb_state_clear_exc
+	mrb_unity_mrb_state_exc
+	mrb_unity_nil_p
+	mrb_unity_nil_value
+	mrb_unity_obj_value
+	mrb_unity_ptr_to_str
+	mrb_unity_set_abort_func
+	mrb_unity_string_buf
+	mrb_unity_string_len
+	mrb_unity_symbol_value
+	mrb_unity_true_value
+	mrb_unity_type
+	mrb_binding_alloc
+	mrb_binding_extract_env
+	mrb_binding_extract_proc
+	mrb_binding_wrap_lvspace
+	mrb_mruby_binding_core_gem_final
+	mrb_mruby_binding_core_gem_init
 	mrb_init_mrbgems
